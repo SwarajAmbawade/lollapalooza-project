@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lollapalooza Festival</title>
+    <link rel="stylesheet" href="css\styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+
+        <div class="logo">Lollapalooza</div>
+
+        <a href="tickets.html" class="btn-primary nav-ticket" onclick="bookTicket()">Buy Tickets</a>
+    </header>
+
+    <!-- 📂 SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()">✖</div>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <hr>
+            <li><a href="#"><i class="fas fa-music"></i> Lineup</a></li>
+            <hr>
+            <li><a href="#"><i class="fas fa-ticket-alt"></i> Tickets</a></li>
+            <hr>
+            <li><a href="#"><i class="fas fa-store"></i> Vendors</a></li>
+            <hr>
+            <li><a href="#"><i class="fas fa-image"></i> Gallery</a></li>
+            <hr>
+            <li><a href="#"><i class="fas fa-user"></i> Login</a></li>
+            <hr>
+            <li><a href="#"><i class="fas fa-chart-line"></i> Admin Dashboard</a></li>
+            <hr>
+            <li class="mobile-ticket">
+                <a href="tickets.html" class="btn-primary" onclick="bookTicket()">Buy Tickets</a>
+            </li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <!-- 🎬 HERO SECTION -->
+    <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="https://cdn.coverr.co/videos/coverr-crowd-at-a-concert-5170/1080p.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+        <h1>Lollapalooza 2026</h1>
+        <p>Pune, India | March 12-15</p>
+
+        <div class="hero-buttons">
+            <button class="btn-primary" onclick="window.location.href='tickets.html'; bookTicket();">Buy Tickets</button>
+            <button class="btn-secondary">View Lineup</button>
+        </div>
+    </div>
+</section>
+
+    <!-- 🎟 TICKETS PREVIEW -->
+    <section class="tickets reveal parallax">
+        <h2>Tickets</h2>
+        <div class="ticket-container">
+            <div class="ticket-card">
+                <h3>1 Day Pass</h3>
+                <p>₹1999</p>
+                <button>Buy Now</button>
+            </div>
+            <div class="ticket-card">
+                <h3>3 Day Pass</h3>
+                <p>₹4999</p>
+                <button>Buy Now</button>
+            </div>
+            <div class="ticket-card vip">
+                <h3>VIP Pass</h3>
+                <p>₹9999</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎤 LINEUP -->
+    <section class="lineup reveal parallax">
+        <h2>Top Lineup</h2>
+        <div class="grid">
+            <div class="card">Artist 1</div>
+            <div class="card">Artist 2</div>
+            <div class="card">Artist 3</div>
+            <div class="card">Artist 4</div>
+        </div>
+        <button class="btn-secondary">Explore More</button>
+    </section>
+
+    <!-- 🍔 VENDORS -->
+    <section class="vendors reveal parallax">
+        <h2>Food & Vendors</h2>
+        <div class="grid">
+            <div class="card">Food Vendor</div>
+            <div class="card">Drinks</div>
+            <div class="card">Merch</div>
+        </div>
+    </section>
+
+    <!-- 📊 CROWD STATUS -->
+    <section class="crowd reveal">
+        <h2>Live Crowd Status</h2>
+        <p>Main Stage: 🔴 High</p>
+        <p>Stage B: 🟡 Medium</p>
+        <p>Food Court: 🟢 Low</p>
+    </section>
+
+    <!-- 🎥 GALLERY -->
+    <section class="gallery reveal">
+        <h2>Gallery</h2>
+        <div class="grid">
+            <div class="img-box"></div>
+            <div class="img-box"></div>
+            <div class="img-box"></div>
+            <div class="img-box"></div>
+        </div>
+    </section>
+
+    <!-- 📖 ABOUT -->
+    <section class="about reveal">
+        <h2>About Festival</h2>
+        <p>A multi-day music festival featuring top artists, food vendors, and unforgettable experiences.</p>
+    </section>
+
+    <!-- 📩 NEWSLETTER -->
+    <section class="newsletter">
+        <h2>Stay Updated</h2>
+        <input type="email" placeholder="Enter your email">
+        <button class="btn-primary">Subscribe</button>
+    </section>
+
+    <!-- 🔻 FOOTER -->
+    <footer>
+        <p>© 2026 Lollapalooza | All Rights Reserved</p>
+    </footer>
+
+
+
+    <script>
+    function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("active");
+    }
+
+    function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("active");
+        document.getElementById("overlay").classList.toggle("active");
+    }
+
+    window.addEventListener("scroll", () => {
+        const reveals = document.querySelectorAll(".reveal");
+
+        reveals.forEach((el) => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+
+            if (elementTop < windowHeight - 100) {
+                el.classList.add("active");
+            }
+        });
+    });
+
+    window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        const video = document.querySelector(".hero-video");
+
+        if (video) {
+            video.style.transform = `translateY(${scrollY * 0.3}px)`;
+        }
+    });
+
+    window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+
+        /* HERO PARALLAX */
+        const video = document.querySelector(".hero-video");
+        if (video) {
+            video.style.transform = `translateY(${scrollY * 0.3}px)`;
+        }
+
+        /* SECTION PARALLAX */
+        const sections = document.querySelectorAll(".parallax");
+        sections.forEach((sec, i) => {
+            sec.style.transform = `translateY(${scrollY * (0.05 + i * 0.01)}px)`;
+        });
+    });
+    </script>
+</body>
+</html>

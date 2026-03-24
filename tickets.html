@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets - Lollapalooza</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/tickets.css">
+</head>
+<body>
+
+<!-- 🔝 NAVBAR -->
+<header class="navbar">
+    <div class="menu-icon">☰</div>
+    <div class="logo">Lollapalooza</div>
+</header>
+
+<!-- 🎬 HERO -->
+<section class="tickets-hero">
+    <h1>🎟️ Book Your Tickets</h1>
+    <p>Select your pass and get ready for the festival</p>
+</section>
+
+<!-- 🎟️ TICKET SELECTION -->
+<section class="ticket-selection">
+
+    <h2>Select Your Pass</h2>
+
+    <div class="ticket-grid">
+        <div class="ticket-card" onclick="selectTicket(this, 1999)">
+            <h3>1 Day Pass</h3>
+            <p class="price">₹1999</p>
+            <ul>
+                <li>✔ Access to 1 day</li>
+                <li>✔ General entry</li>
+            </ul>
+        </div>
+
+        <div class="ticket-card" onclick="selectTicket(this, 4999)">
+            <h3>3 Day Pass</h3>
+            <p class="price">₹4999</p>
+            <ul>
+                <li>✔ All days access</li>
+                <li>✔ Priority entry</li>
+            </ul>
+        </div>
+
+        <div class="ticket-card vip" onclick="selectTicket(this, 9999)">
+            <h3>VIP Pass</h3>
+            <p class="price">₹9999</p>
+            <ul>
+                <li>✔ VIP lounge</li>
+                <li>✔ Free drinks</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+<!-- 🔢 BOOKING PANEL -->
+<section class="booking-panel">
+
+    <div class="quantity">
+        <h3>Quantity</h3>
+        <button onclick="changeQty(-1)">-</button>
+        <span id="qty">1</span>
+        <button onclick="changeQty(1)">+</button>
+    </div>
+
+    <!-- 🧾 USER FORM -->
+    <div class="user-form">
+        <h3>Your Details</h3>
+        <input type="text" placeholder="Full Name">
+        <input type="email" placeholder="Email">
+        <input type="tel" placeholder="Phone">
+    </div>
+
+    <!-- 💰 SUMMARY -->
+    <div class="summary">
+        <h3>Summary</h3>
+        <p>Ticket: <span id="ticketName">None</span></p>
+        <p>Price: ₹<span id="ticketPrice">0</span></p>
+        <p>Quantity: <span id="ticketQty">1</span></p>
+        <hr>
+        <h2>Total: ₹<span id="total">0</span></h2>
+
+        <button class="btn-primary" onclick="bookTicket()">Proceed to Pay</button>
+    </div>
+
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer>
+    <p>© 2026 Lollapalooza</p>
+</footer>
+
+<!-- JS -->
+<script src="js/tickets.js"></script>
+
+</body>
+</html>
