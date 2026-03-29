@@ -1,0 +1,107 @@
+.admin {
+    padding: 60px 10%;
+}
+
+/* HEADER */
+.admin h1 {
+    margin-bottom: 20px;
+}
+
+/* SEARCH BAR */
+.search-bar {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 8px;
+    border: none;
+}
+
+.search-bar select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background: #1a1a1a;
+    color: #ff2e63;
+}
+
+tr {
+    border-bottom: 1px solid #222;
+    transition: 0.2s;
+}
+
+tr:hover {
+    background: #1f1f1f;
+    transform: scale(1.01);
+}
+
+/* BADGES */
+.badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+.vip {
+    background: gold;
+    color: black;
+}
+
+.normal {
+    background: #ff2e63;
+}
+
+/* logout button css */
+/* NAVBAR FLEX FIX */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* LOGOUT BUTTON */
+.logout-btn {
+    position: absolute;
+    right: 30px;
+
+    background: transparent;
+    border: 1px solid #ff2e63;
+    color: #ff2e63;
+
+    padding: 8px 18px;
+    border-radius: 20px;
+
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.logout-btn:hover {
+    background: #ff2e63;
+    color: white;
+    transform: scale(1.05);
+}

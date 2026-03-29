@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">Admin Dashboard</div>
+    <button class="logout-btn" onclick="logout()">⎋Logout</button>
+</header>
+
+<section class="admin">
+    <h1>📊 Bookings</h1>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by name...">
+
+        <select id="filterTicket">
+            <option value="">All Tickets</option>
+            <option value="VIP">VIP</option>
+            <option value="1 Day Pass">1 Day Pass</option>
+            <option value="3 Day Pass">3 Day Pass</option>
+        </select>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Ticket</th>
+                <th>Qty</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="bookingTable">
+            <!-- Data comes here -->
+        </tbody>
+    </table>
+</section>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>
