@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff2e63;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<section style="text-align:center; margin-top:100px;">
+    <h1>🎉 Booking Confirmed!</h1>
+
+    <div id="qrBox"></div>
+
+    <p>Show this QR at entry</p>
+</section>
+
+<button onclick="downloadPDF()">Download Ticket PDF</button>
+
+<script>
+const qr = localStorage.getItem("qr");
+
+document.getElementById("qrBox").innerHTML = `
+    <img src="${qr}" width="200">
+`;
+
+function downloadPDF() {
+    const booking = JSON.parse(localStorage.getItem("bookingData"));
+
+    fetch("http://localhost:5000/api/generate-pdf", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(booking)
+    })
+    .then(res => res.blob())
+    .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "ticket.pdf";
+        a.click();
+    });
+}
+</script>
+
+</body>
+</html>

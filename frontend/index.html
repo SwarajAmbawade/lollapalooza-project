@@ -96,20 +96,16 @@
     <!-- 🍔 VENDORS -->
     <section class="vendors reveal parallax">
         <h2>Food & Vendors</h2>
-        <div class="grid">
-            <div class="card">Food Vendor</div>
-            <div class="card">Drinks</div>
-            <div class="card">Merch</div>
+        <div id="vendorList" class="grid">
+            <!-- Vendors will load here dynamically -->
         </div>
     </section>
 
     <!-- 📊 CROWD STATUS -->
-    <section class="crowd reveal">
-        <h2>Live Crowd Status</h2>
-        <p>Main Stage: 🔴 High</p>
-        <p>Stage B: 🟡 Medium</p>
-        <p>Food Court: 🟢 Low</p>
-    </section>
+    <section class="crowd">
+    <h2>Live Crowd Status</h2>
+    <div id="crowdBars"></div>
+</section>
 
     <!-- 🎥 GALLERY -->
     <section class="gallery reveal">
@@ -189,6 +185,10 @@
             sec.style.transform = `translateY(${scrollY * (0.05 + i * 0.01)}px)`;
         });
     });
+
+   
     </script>
+    <script src="js/vendors.js"></script>
+    <script src="js/crowd.js"></script>
 </body>
 </html>

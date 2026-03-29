@@ -39,35 +39,22 @@ function bookTicket() {
     const phone = document.querySelector("input[type='tel']").value;
 
     if (!name || !email || !phone || selectedPrice === 0) {
-        alert("Please fill all details and select a ticket!");
+        alert("Fill all details!");
         return;
     }
 
     const data = {
-        name: name,
-        email: email,
-        phone: phone,
+        name,
+        email,
+        phone,
         ticket_type: selectedName,
         quantity: qty,
         total_price: selectedPrice * qty
     };
 
-    fetch("http://localhost:5000/api/book", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.text())
-    .then(response => {
-        alert(response);
+    // SAVE TEMP (for payment page)
+    localStorage.setItem("bookingData", JSON.stringify(data));
 
-        // Optional reset
-        location.reload();
-    })
-    .catch(error => {
-        console.error(error);
-        alert("Booking failed!");
-    });
+    // REDIRECT
+    window.location.href = "payment.html";
 }

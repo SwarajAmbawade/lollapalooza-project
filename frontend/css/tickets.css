@@ -95,3 +95,11 @@
         align-items: center;
     }
 }
+
+/* qr code  */
+#qrContainer img {
+    width: 200px;
+    margin-top: 15px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+}

@@ -67,3 +67,84 @@ function applyFilters() {
 
     renderTable(filtered);
 }
+
+function addVendor() {
+    const name = document.getElementById("vendorName").value;
+    const category = document.getElementById("vendorCategory").value;
+    const location = document.getElementById("vendorLocation").value;
+
+    if (!name || !location) {
+        alert("Fill all fields!");
+        return;
+    }
+
+    fetch("http://localhost:5000/api/vendors", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, category, location })
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        location.reload(); // refresh to see update
+    })
+    .catch(err => console.error(err));
+}
+
+function loadVendors() {
+    fetch("http://localhost:5000/api/vendors")
+        .then(res => res.json())
+        .then(data => {
+            const table = document.querySelector("#vendorTable tbody");
+            table.innerHTML = "";
+
+            data.forEach(v => {
+                const row = `
+                    <tr>
+                        <td>${v.id}</td>
+                        <td>${v.name}</td>
+                        <td>${v.category}</td>
+                        <td>${v.location}</td>
+                        <td>
+                            <button class="delete-btn" onclick="deleteVendor(${v.id})">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                table.innerHTML += row;
+            });
+        });
+}
+
+function deleteVendor(id) {
+    if (!confirm("Delete this vendor?")) return;
+
+    fetch(`http://localhost:5000/api/vendors/${id}`, {
+        method: "DELETE"
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        loadVendors(); // refresh table
+    });
+}
+
+loadVendors();
+
+function updateCrowd() {
+    const stage = document.getElementById("stage").value;
+    const status = document.getElementById("status").value;
+
+    fetch("http://localhost:5000/api/crowd", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ stage, status })
+    })
+    .then(res => res.text())
+    .then(msg => alert(msg));
+}

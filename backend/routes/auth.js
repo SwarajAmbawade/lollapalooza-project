@@ -1,3 +1,8 @@
+const express = require("express");
+const router = express.Router();
+
+const db = require("../db");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 router.post("/login", (req, res) => {
@@ -28,3 +33,5 @@ router.post("/login", (req, res) => {
         res.json({ token });
     });
 });
+
+module.exports = router;
